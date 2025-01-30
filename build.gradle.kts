@@ -1,5 +1,7 @@
 plugins {
     id("java")
+    id ("application")
+    id("io.qameta.allure") version "2.11.0"
 }
 
 group = "org.example"
@@ -15,7 +17,8 @@ dependencies {
     testImplementation("org.seleniumhq.selenium:selenium-java:4.27.0")
     testImplementation ("io.rest-assured:rest-assured:5.5.0")
     testImplementation ("org.json:json:20240303")
-
+    testImplementation ("io.qameta.allure:allure-junit5:2.20.0")
+    testImplementation ("io.qameta.allure:allure-rest-assured:2.20.1")
 
 
 
