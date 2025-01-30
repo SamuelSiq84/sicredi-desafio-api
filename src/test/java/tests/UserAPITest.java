@@ -127,7 +127,7 @@ public class UserAPITest extends ApiEndpoints{
                 .log().all()
                 .extract().path("accessToken");
 
-        System.out.println("AccessToken válido: " + token);
+        //System.out.println("AccessToken válido: " + token);
 
         Response response = given().contentType("application/json")
                 .header("Authorization","Baerer " + token)
