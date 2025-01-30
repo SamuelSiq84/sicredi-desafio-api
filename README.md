@@ -1,5 +1,9 @@
-
-
+IDEA: Intellij-IDEA
+JAVA 
+Gradle
+Allure report
+REST-Assured
+Junit 5
 
 
 ---------------- Cenários de Teste ------------------------
@@ -78,6 +82,16 @@ Pré-condição: URL: https://dummyjson.com/auth/products
 Dado que no método GET PRODUCTS
 Quando na request da requisição a URL
 Então no response o status 200 o assert body do ID e Title do product
+
+-----
+Report de execução
+
+Bugs
+nenhum bug reportado.
+
+Melhorias
+Instabilidade em algum momento retorna status code 500
+
 
 
 
