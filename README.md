@@ -3,6 +3,8 @@
 
 
 ---------------- Cenários de Teste ------------------------
+
+---
 CT001 - Validar o método GET o retorno de USERS
 
 Pré-condição: URL: https://dummyjson.com/users
