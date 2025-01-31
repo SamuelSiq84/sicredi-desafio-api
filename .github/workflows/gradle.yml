@@ -1,4 +1,4 @@
-name: Gradle and REST Assured Tests
+name: Gradle and REST Assured sicredi-desafio-api
 
 on:
   push:
@@ -45,10 +45,6 @@ jobs:
         with:
           name: REST-Assured-allure-reports
           path: build/allure-results
-
-
-
-
 
 
 
