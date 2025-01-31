@@ -1,10 +1,10 @@
-name: Gradle and REST Assured sicredi-desafio-api
+name: Gradle and REST Assured Tests
 
 on:
   push:
-    branches: [ "qaautomationSicredi" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "qaautomationSicredi" ]
+    branches: [ "main" ]
 
 jobs:
   Run-Rest-Assured-Tests:
@@ -18,7 +18,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          java-version: "23"
+          java-version: "11"
           distribution: "adopt"
 
 
@@ -35,18 +35,13 @@ jobs:
             arguments: clean test
 
       - name: Archive REST-Assured allure reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: REST-Assured-allure-reports
           path: build/allure-results
 
       - name: Upload REST-Assured allure reports to GitHub
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: REST-Assured-allure-reports
           path: build/allure-results
-
-
-
-
-
