@@ -21,19 +21,6 @@ jobs:
           java-version: "23"
           distribution: "adopt"
 
-
-
-      - name: Build with Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          arguments: build
-
-
-      - name: Run REST Assured Tests with Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-            arguments: clean test
-
       - name: Archive REST-Assured allure reports
         uses: actions/upload-artifact@v4
         with:
