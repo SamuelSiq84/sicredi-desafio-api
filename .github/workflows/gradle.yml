@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-results-${{  github.run_id }}
-          path: allure-results
+          path: allure-results/build
 
 
 
