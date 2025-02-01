@@ -106,8 +106,8 @@ public class UserAPITest extends ApiEndpoints{
                 .get(ApiEndpoints.AUTH_PRODUCTS)
         .then()
                 .log().all()
-                .statusCode(200)
-                ;
+                .statusCode(200);
+
     }
     @Test
     @Severity(SeverityLevel.NORMAL)
