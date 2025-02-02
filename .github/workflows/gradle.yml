@@ -18,7 +18,7 @@ jobs:
       - name: Build Java
         uses: actions/setup-java@v3
         with:
-          java-version: "23"
+          java-version: "11"
           distribution: "adopt"
 
       - name: Build and Run REST Assured sicredi-desafio-api
