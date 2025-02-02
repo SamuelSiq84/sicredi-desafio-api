@@ -31,7 +31,7 @@ jobs:
 
         with:
           name: REST-Assured-results allure
-          path: build/reports/tests/test
+          path: build/allure-results
 
       - name: Upload REST-Assured results to GitHub
         uses: actions/upload-artifact@v4
