@@ -27,7 +27,7 @@ jobs:
           arguments: build
       - name: Archive REST-Assured results
         uses: actions/upload-artifact@v4
-        continue-on-error: false
+        continue-on-error: true
 
         with:
           name: REST-Assured-results allure
@@ -35,7 +35,7 @@ jobs:
 
       - name: Upload REST-Assured results to GitHub
         uses: actions/upload-artifact@v4
-        continue-on-error: false
+        continue-on-error: true
 
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
