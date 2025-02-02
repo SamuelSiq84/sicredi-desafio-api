@@ -18,24 +18,33 @@ jobs:
       - name: Build Java
         uses: actions/setup-java@v3
         with:
-          java-version: "23"
+          java-version: "11"
           distribution: "adopt"
 
-      - name: Build and Run REST Assured Tests with Gradle
+      - name: Build and Run REST Assured sicredi-desafio-api
         uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
-        continue-on-error: true
         with:
           arguments: build
       - name: Archive REST-Assured results
         uses: actions/upload-artifact@v4
+        continue-on-error: true
+
         with:
-          name: REST-Assured-results
+          name: REST-Assured-results allure
           path: build/reports/tests/test
+
       - name: Upload REST-Assured results to GitHub
         uses: actions/upload-artifact@v4
+        continue-on-error: true
+
+      - name: Allure Report action from marketplace
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
         with:
-            name: build-artifact-${{ github.run_number }}
-            path: build/reports/tests/test
+          allure_results: build/allure-results
+          allure_report: allure-report
+          allure_history: allure-history
 
 
 
