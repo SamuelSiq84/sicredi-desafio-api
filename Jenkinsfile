@@ -1,26 +1,34 @@
 pipeline {
     agent any
 
-
     stages {
-        stage('Build') {
+        stage('Clone project') {
             steps {
-                withGradle {
-                sh './gradlew dependencies && ./gradlew assemble && find ./ -name "*.war"'
+                script{
+                    currentBuild.displayName = "#${BUID_NUMBER} [${GIT_BRANCH}]"
+                }
+                cleanWs()
+                checkout scm
             }
         }
+      stage ('Run Tests'){
+            steps{
+                sh "./gradlew test"
+            }
+        }
+        }
+
+        post{
+            always{
+            allure([
+                includeProperties: false,
+                properties       :[],
+                reportBuildPolicy: 'ALWAYS',
+                results          : [[path:  'build/allure-results']]
+                ])
+                }
+            }
     }
 
 
-     stage('Post') {
-          steps {
-            script {
-              jacoco()
-              junit 'build/test-results/test/*.xml'
-              def pmd = scanForIssues tool: [$class: 'Pmd'], pattern: 'build/reports/pmd/*.xml'
-              publishIssues issues: [pmd]
-            }
-          }
-        }
-    }
-}
+
