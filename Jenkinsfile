@@ -1,27 +1,26 @@
 pipeline {
-    agent { label 'java' }
+    agent any
+
+
     stages {
         stage('Build') {
             steps {
                 withGradle {
-                sh 'gradle --version'
+                sh './gradle clean build --stacktrace -i'
             }
         }
     }
-         stage('Report') {
-                    steps {
-                        publishHTML([reportName  : 'Allure Report', reportDir: './allure-gradle-plugin', reportFiles: 'index.html',
-                                     reportTitles: '', allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false])
-                    }
-                }
-    }
-    post {
-        always {
-            deleteDir()
-        }
-        failure {
-            slackSend message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} failed (<${env.BUILD_URL}|Open>)",
-                    color: 'danger', teamDomain: 'qameta', channel: 'allure', tokenCredentialId: 'allure-channel'
+
+
+     stage('Post') {
+          steps {
+            script {
+              jacoco()
+              junit 'build/test-results/test/*.xml'
+              def pmd = scanForIssues tool: [$class: 'Pmd'], pattern: 'build/reports/pmd/*.xml'
+              publishIssues issues: [pmd]
+            }
+          }
         }
     }
 }
