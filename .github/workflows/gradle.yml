@@ -38,7 +38,7 @@ jobs:
         continue-on-error: true
 
       - name: Generate Allure test report
-        uses: actions/allure-report@v3.4
+        uses: andgineer/allure-report@v3.4
         id: allure-report
         if: always()
         with:
