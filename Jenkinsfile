@@ -1,7 +1,4 @@
 pipeline {
-    tools {
-        gradle 'installation-name'
-    }
     agent { label 'java' }
     stages {
         stage('Build') {
