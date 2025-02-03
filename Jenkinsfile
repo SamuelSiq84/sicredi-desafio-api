@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 withGradle {
-                sh './gradle clean build --stacktrace -i'
+                sh './gradlew dependencies && ./gradlew assemble && find ./ -name "*.war"'
             }
         }
     }
