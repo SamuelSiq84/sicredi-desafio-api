@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone project') {
+        stage('Build') {
             steps {
                 script{
                     currentBuild.displayName = "#${BUID_NUMBER} [${GIT_BRANCH}]"
