@@ -1,27 +1,21 @@
+// If you use the [Declarative Pipeline syntax](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline), find the stage that runs the tests and insert a new `always` block into that stage's `post` block. This will make Allure Report run after the test launch regardless of how many tests succeeded.
 pipeline {
-  agent any
+    agent any
 
-  stages {
-          stage('Checkout') {
-              steps { //Checking out the repo
-                  checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/master']], browser: [$class: 'BitbucketWeb', repoUrl: 'https://web.com/blah'], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'ssh://git@git.giturl.com/test/test.git']]]
-              }
-          }
-          stage('Unit & Integration Tests') {
-                      steps {
-                          script {
-                              try {
-                                  sh './gradlew clean test --no-daemon' //run a gradle task
-                              } finally {
-                                  junit '**/build/test-results/test/*.xml' //make the junit test results available in any case (success & failure)
-                              }
-                          }
-                      }
-          }
-          stage('Publish Artifact to Nexus') {
-                      steps {
-                          sh './gradlew publish --no-daemon'
-                      }
-          }
-  }
+    stages {
+        stage('Build') {
+            steps {
+                git 'https://github.com/SamuelSiq84/sicredi-desafio-api.git'
+                sh './gradlew clean test'
+            }
+            post {
+                always {
+                    allure includeProperties:
+                     false,
+                     jdk: '',
+                     results: [[path: 'build/allure-results']]
+                }
+            }
+        }
+    }
 }
