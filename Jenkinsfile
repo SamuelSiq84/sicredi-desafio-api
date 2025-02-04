@@ -15,20 +15,9 @@ pipeline {
             steps{
                 sh "./gradlew test"
             }
-        }
-        }
-
-        post{
-            always{
-            allure([
-                includeProperties: false,
-                properties       :[],
-                reportBuildPolicy: 'ALWAYS',
-                results          : [[path:  'build/allure-results']]
-                ])
-                }
-            }
+      }
     }
 
 
 
+}
