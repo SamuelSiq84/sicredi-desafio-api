@@ -11,7 +11,7 @@ pipeline {
                 checkout scm
             }
         }
-      stage ('Run Tests'){
+      stage ('Build'){
             steps{
                 sh "./gradlew test"
             }
