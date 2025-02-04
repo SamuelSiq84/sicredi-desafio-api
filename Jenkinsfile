@@ -9,13 +9,7 @@ pipeline {
           }
           stage('API testing') {
                       steps {
-                          script {
-                              try {
-                                  sh './gradlew clean test --no-daemon' //run a gradle task
-                              } finally {
-                                  junit '**/build/allure-results/*.xml' //make the junit test results available in any case (success & failure)
-                              }
-                          }
+                          sh './gradlew clean test'
                       }
           }
 
