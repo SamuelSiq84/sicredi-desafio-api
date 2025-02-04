@@ -1,19 +1,21 @@
 pipeline {
-    agent any
+  agent any
 
-    stages {
-        stage('sicredi-desafio-api')
-        node{
-            if(isUnix()){
-            sh 'gradle build --info'
-
-            }
-            else{
-                bat 'gradle build --info'
-            }
-        }
+  stages {
+    stage("Build") {
+      steps {
+        sh 'mvn -v'
+      }
     }
 
-
+    stage("Testing") {
+        agent {'openjdk:7-jdk-alpine'}
+        stage("Integration Tests") {
+          steps {
+            sh 'java -version'
+          }
+        }
+    }
+  }
 
 }
