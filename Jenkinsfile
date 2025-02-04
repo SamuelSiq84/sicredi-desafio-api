@@ -10,17 +10,18 @@ pipeline {
         }
 
 
-        stage('Publish') {
-            echo 'Publish Allure report'
-            publishHTML(
-                    target: [
-                            allowMissing         : false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll              : true,
-                            reportDir            : 'build/site/allure-gradle-plugin',
-                            reportFiles          : 'index.html',
-                            reportName           : "Allure Report"
-                    ]
-            )
-   }    }
+        stage('Generate Allure Report') {
+            steps {
+                script {
+                    ws('**/build/allure-reports') {
+                    allure([  includeProperties: false,
+                              jdk: '',
+                              properties: [],
+                              reportBuildPolicy: 'ALWAYS',
+                              results: [[path: 'allure-results']] ])
+                    }
+                }
+            }
+        }
+    }
 }
