@@ -11,19 +11,4 @@ pipeline {
             }
         }
     }
-//         stage('Generate Allure Report') {
-//             steps {
-//                 script {
-//                      ws('/users/samuel/.jenkins/workspace/build/allure-reports/index.html') {
-//                          allure([  includeProperties: false,
-//                                    jdk: '',
-//                                    properties: [],
-//                                    reportBuildPolicy: 'ALWAYS',
-//                                   results: [[path: 'allure-results']] ])
-//
-//                          }
-//                      }
-//                 }
-//             }
-//         }
-//}
+}
