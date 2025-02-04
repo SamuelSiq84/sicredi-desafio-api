@@ -18,13 +18,14 @@ pipeline {
                           }
                       }
           }
-          post {
-              always {
-                    allure includeProperties:
-                     false,
-                     jdk: '',
-                     results: [[path: 'build/allure-results']]
-              }
-          }
+
   }
+           post {
+                always {
+                      allure includeProperties:
+                       false,
+                       jdk: '23',
+                       results: [[path: 'build/allure-results']]
+           }    }
+
 }
