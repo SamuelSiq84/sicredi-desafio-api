@@ -89,67 +89,67 @@ public class UserAPITest extends ApiEndpoints{
                 .assertThat().body("id",is(1));
     }
 
-//    @Test
-//    @Severity(SeverityLevel.NORMAL)
-//    @Story("Validar GET Products")
-//    @Description("Validar retorno do método consultar produtos passando o token")
-//
-//    public void CT004_ValidarMetodoGETProductsAuthorizationLoginUSER(){
-//        Setup();
-//        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MzgwOTI4NzEsImV4cCI6MTczODA5NjQ3MX0.nG4Sr38B4lO4Gu9Xx1RafsRO6xZugdOq22hV5DnRYCI";
-//        String authToken = "Baerer " + token;
-//        given()
-//                .contentType("application/json")
-//                .header("Authorization", authToken)
-//                .log().all()
-//        .when()
-//                .get(ApiEndpoints.AUTH_PRODUCTS)
-//        .then()
-//                .log().all()
-//                .statusCode(200);
-//
-//    }
-//    @Test
-//    @Severity(SeverityLevel.NORMAL)
-//    @Story("Validar GET Token e POST Products")
-//    @Description("Validar retorno do método GET com o token e consultar produtos passando o token")
-//
-//    public void CT005_ValidarPOSTAuthorizationLoginParaGETAuthProducts(){ //alternativo
-//        Setup();
-//        String JsonBody = "{\"username\":\"emilys\",\r\n" +
-//           "\"password\":\"emilyspass\"}";
-//        String token =
-//        given().contentType("application/json")
-//                .body(JsonBody)
-//
-//        .when().post(ApiEndpoints.AUTH_LOGIN)
-//        .then()
-//                .log().all()
-//                .extract().path("accessToken");
-//
-//        //System.out.println("AccessToken válido: " + token);
-//
-//        Response response = given().contentType("application/json")
-//                .header("Authorization","Baerer " + token)
-//                .log().all()
-//        .when()
-//                .get(ApiEndpoints.AUTH_PRODUCTS)
-//        .then()
-//                .log().all()
-//                .statusCode(200)
-//                .extract().response()
-//                ;
-//
-//        String accessToken = response.path("accessToken");
-//        long accessToken1 =
-//                given().
-//                when().get()
-//                .then().extract().jsonPath().getLong("accessToken");
-//    assertThat(
-//            when().get().then().extract().jsonPath().getLong("accessToken"),equalTo(token)
-//    );
-//
-//    }
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Validar GET Products")
+    @Description("Validar retorno do método consultar produtos passando o token")
+
+    public void CT004_ValidarMetodoGETProductsAuthorizationLoginUSER(){
+        Setup();
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MzgwOTI4NzEsImV4cCI6MTczODA5NjQ3MX0.nG4Sr38B4lO4Gu9Xx1RafsRO6xZugdOq22hV5DnRYCI";
+        String authToken = "Baerer " + token;
+        given()
+                .contentType("application/json")
+                .header("Authorization", authToken)
+                .log().all()
+        .when()
+                .get(ApiEndpoints.AUTH_PRODUCTS)
+        .then()
+                .log().all()
+                .statusCode(200);
+
+    }
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Validar GET Token e POST Products")
+    @Description("Validar retorno do método GET com o token e consultar produtos passando o token")
+
+    public void CT005_ValidarPOSTAuthorizationLoginParaGETAuthProducts(){ //alternativo
+        Setup();
+        String JsonBody = "{\"username\":\"emilys\",\r\n" +
+           "\"password\":\"emilyspass\"}";
+        String token =
+        given().contentType("application/json")
+                .body(JsonBody)
+
+        .when().post(ApiEndpoints.AUTH_LOGIN)
+        .then()
+                .log().all()
+                .extract().path("accessToken");
+
+        //System.out.println("AccessToken válido: " + token);
+
+        Response response = given().contentType("application/json")
+                .header("Authorization","Baerer " + token)
+                .log().all()
+        .when()
+                .get(ApiEndpoints.AUTH_PRODUCTS)
+        .then()
+                .log().all()
+                .statusCode(200)
+                .extract().response()
+                ;
+
+        String accessToken = response.path("accessToken");
+        long accessToken1 =
+                given().
+                when().get()
+                .then().extract().jsonPath().getLong("accessToken");
+    assertThat(
+            when().get().then().extract().jsonPath().getLong("accessToken"),equalTo(token)
+    );
+
+    }
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Story("Validar POST adicionando produto")
