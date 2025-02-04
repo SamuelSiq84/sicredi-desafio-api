@@ -10,11 +10,14 @@ pipeline {
             }
             post {
                 always {
+                    script {
+                    sh '/usr/local/lib/allure-2.4.1/bin/allure'
                     allure includeProperties:
                      false,
                      jdk: '',
                      results: [[path: 'build/allure-results']]
                 }
+              }
             }
         }
     }
