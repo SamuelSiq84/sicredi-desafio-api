@@ -4,7 +4,7 @@ pipeline {
   stages {
           stage('Checkout') {
               steps { //Checking out the repo
-                  checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/master']], browser: [$class: 'BitbucketWeb', repoUrl: 'https://web.com/blah'], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'ssh://git@git.giturl.com/test/test.git']]]
+                  checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/qaautomationSicredi']], browser: [$class: 'BitbucketWeb', repoUrl: 'https://'], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/SamuelSiq84/sicredi-desafio-api.git']]]
               }
           }
           stage('Unit & Integration Tests') {
@@ -18,7 +18,7 @@ pipeline {
                           }
                       }
           }
-          stage('Publish Artifact to Nexus') {
+          stage('Publish Artifact to Allure') {
                       steps {
                           sh './gradlew publish --no-daemon'
                       }
