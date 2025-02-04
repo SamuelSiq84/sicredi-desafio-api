@@ -1,21 +1,15 @@
-// If you use the [Declarative Pipeline syntax](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline), find the stage that runs the tests and insert a new `always` block into that stage's `post` block. This will make Allure Report run after the test launch regardless of how many tests succeeded.
-pipeline {
-    agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                git 'https://github.com/SamuelSiq84/sicredi-desafio-api.git'
-                sh './gradlew clean test'
-            }
-            post {
-                always {
-                    allure includeProperties:
-                     false,
-                     jdk: '23',
-                     results: [[path: 'build/allure-results']]
-                }
-            }
+node {
+    stage('Build') {
+        try {
+            git 'https://github.com/SamuelSiq84/sicredi-desafio-api.git'
+            sh './gradlew clean test'
+        }
+        finally {
+            allure includeProperties:
+               false,
+               jdk: '',
+               results: [[path: 'build/allure-results']]
         }
     }
 }
