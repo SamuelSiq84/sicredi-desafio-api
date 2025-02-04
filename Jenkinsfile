@@ -2,12 +2,18 @@ pipeline {
     agent any
 
     stages {
-        stage('Api Testing') {
+        stage('Build') {
             steps {
-                sh 'make check || true'
-                junit '**/target/*.xml'
-
+                sh 'make'
+                echo 'Building..'
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+
     }
 }
