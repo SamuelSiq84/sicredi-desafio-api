@@ -33,9 +33,7 @@ pipeline {
     stages {
         stage('Api Testing') {
             steps {
-                /* `make check` returns non-zero on test failures,
-                * using `true` to allow the Pipeline to continue nonetheless
-                */
+                git 'https://github.com/SamuelSiq84/sicredi-desafio-api.git'
                 sh 'make check || true'
                 junit '**/target/*.xml'
             }
