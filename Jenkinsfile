@@ -2,20 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                script{
-                    currentBuild.displayName = "#${BUID_NUMBER} [${GIT_BRANCH}]"
-                }
-                cleanWs()
-                checkout scm
+        stage('sicredi-desafio-api')
+        node{
+            if(isUnix()){
+            sh 'gradle build --info'
+
+            }
+            else{
+                bat 'gradle build --info'
             }
         }
-      stage ('Build'){
-            steps{
-                sh "./gradlew test"
-            }
-      }
     }
 
 
