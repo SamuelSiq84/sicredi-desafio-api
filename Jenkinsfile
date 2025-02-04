@@ -18,10 +18,13 @@ pipeline {
                           }
                       }
           }
-          stage('Publish Artifact to Allure') {
-                      steps {
-                          sh './gradlew publish --no-daemon'
+          post {
+                      always {
+                          allure includeProperties:
+                             false,
+                             jdk: '',
+                             results: [[path: 'build/allure-results']]
+                          }
                       }
-          }
   }
 }
