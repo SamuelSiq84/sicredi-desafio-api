@@ -5,7 +5,7 @@ pipeline {
         stage('Api Testing') {
             steps {
                 git 'https://github.com/SamuelSiq84/sicredi-desafio-api.git'
-                sh 'make check || true'
+                sh 'make check'
                 junit '**/target/*.xml'
 
             }
