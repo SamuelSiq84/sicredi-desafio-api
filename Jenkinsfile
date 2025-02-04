@@ -12,7 +12,7 @@ pipeline {
                 always {
                     allure includeProperties:
                      false,
-                     jdk: '',
+                     jdk: '23',
                      results: [[path: 'build/allure-results']]
                 }
             }
