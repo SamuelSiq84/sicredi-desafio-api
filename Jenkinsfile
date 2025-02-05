@@ -11,14 +11,11 @@ pipeline {
             }
             post {
                 always {
-                    script {
-                    sh 'jenkins-plugin-cli --plugins allure-jenkins-plugin:2.32.0'
                     allure includeProperties:
                      false,
                      jdk: '',
                      results: [[path: 'build/allure-results']]
                 }
-              }
             }
         }
     }
