@@ -7,11 +7,11 @@ pipeline {
             steps {
 
                 sh './gradlew clean test'
+                sh 'make check || true'
             }
             post {
                 always {
                     script {
-                    sh '/usr/local/lib/allure-2.4.1/bin/allure'
                     allure includeProperties:
                      false,
                      jdk: '',
