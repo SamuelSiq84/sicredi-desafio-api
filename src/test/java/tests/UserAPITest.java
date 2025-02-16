@@ -23,7 +23,6 @@ public class UserAPITest extends ApiEndpoints{
 
     public void Setup(){
         RestAssured.baseURI = ApiEndpoints.BASE_URL;
-        RestAssured.config = RestAssured.config().encoderConfig(encoderConfig().appendDefaultContentCharsetToContentTypeIfUndefined(false));
 
     }
 

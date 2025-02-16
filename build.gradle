@@ -24,6 +24,8 @@ dependencies {
     testImplementation group: 'io.qameta.allure', name: 'allure-junit5', version: '2.29.1'
     testImplementation ("io.qameta.allure:allure-rest-assured:2.11.0")
     testImplementation ("org.slf4j:slf4j-simple:1.7.25")
+    implementation group: 'io.rest-assured', name: 'json-schema-validator', version: '5.4.0'
+
 
 
 
