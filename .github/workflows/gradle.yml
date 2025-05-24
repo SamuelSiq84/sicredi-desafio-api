@@ -2,9 +2,9 @@ name: Gradle and REST Assured sicredi-desafio-api
 
 on:
   push:
-    branches: [ "qaautomationSicredi" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "qaautomationSicredi" ]
+    branches: [ "main" ]
 
 jobs:
   Run-Rest-Assured-Tests:
