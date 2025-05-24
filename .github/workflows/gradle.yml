@@ -18,7 +18,7 @@ jobs:
       - name: Build Java
         uses: actions/setup-java@v3
         with:
-          java-version: "11"
+          java-version: "23"
           distribution: "adopt"
 
       - name: Automacao-sicredi-desafio-api
